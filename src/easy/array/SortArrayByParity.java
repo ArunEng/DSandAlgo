@@ -24,26 +24,23 @@ public class SortArrayByParity {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int nums[] = {0};
+		int nums[] = {3,1,2,4};
 		System.out.println(Arrays.toString(sortArrayByParity(nums)));
 	}
 
 	static int[] sortArrayByParity(int[] nums) {
-		int arr[] = new int[nums.length];
-		int c = 0;
-		for(int i=0;i<nums.length;i++) {
-			if(nums[i]%2==0) {
-				arr[c] = nums[i];
-				c++;
+		int i = 0, j=nums.length-1;
+		while(i<j) {
+			if(nums[i]%2 > nums[j]%2) {
+				int temp = nums[j];
+				nums[j] = nums[i];
+				nums[i] = temp;
 			}
+			if(nums[i]%2==0) i++;
+			if(nums[j]%2!=0) j--;
 		}
-		for(int i=0; i<nums.length;i++) {
-			if(nums[i]%2!=0) {
-				arr[c] = nums[i];
-				c++;
-			}
-		}
-		return arr;
+		
+		return nums;
 	}
 
 }
