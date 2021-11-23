@@ -2,7 +2,6 @@ package easy.array;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 
 /**
  * Given an array of integers nums and an integer target, return indices of the
