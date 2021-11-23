@@ -1,9 +1,6 @@
 package easy.array;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 /**
  * Given two integer arrays nums1 and nums2, return an array of their
  * intersection. Each element in the result must appear as many times as it
