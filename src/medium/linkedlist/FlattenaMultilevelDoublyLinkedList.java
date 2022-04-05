@@ -57,7 +57,7 @@ Merging the serialization of each level and removing trailing nulls we obtain:
 package medium.linkedlist;
 
 public class FlattenaMultilevelDoublyLinkedList {
-	
+
 	static class Node {
 		public int val;
 		public Node prev;
@@ -70,9 +70,27 @@ public class FlattenaMultilevelDoublyLinkedList {
 		Node head = null;
 		System.out.println(flatten(head));
 	}
-	
-	static Node flatten(Node head) {
-        return head;
-    }
 
+	static Node flatten(Node head) {
+		if (head == null)
+			return null;
+		Node curr = head;
+		while (curr != null) {
+			if (curr.child != null) {
+				Node next = curr.next;
+				Node child = flatten(curr.child);
+
+				curr.child = null;
+				curr.next = child;
+				child.prev = curr;
+				while (curr.next != null)
+					curr = curr.next;
+				curr.next = next;
+				if (next != null)
+					next.prev = curr;
+			}
+			curr = curr.next;
+		}
+		return head;
+	}
 }
